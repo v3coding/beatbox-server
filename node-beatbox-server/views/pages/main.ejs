@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Button Press Example</title>
+  </head>
+  <body>
+    <h1>Button Press Example</h1>
+    <button id="myButton">Press me</button>
+    <button id="myOtherButton">Send different message</button>
+    <button id="myThirdButton">Call function 2</button>
+    <div id="message"></div>
+
+    <script>
+      const button = document.getElementById('myButton');
+      const otherButton = document.getElementById('myOtherButton');
+      const thirdButton = document.getElementById('myThirdButton');
+      const messageDiv = document.getElementById('message');
+      
+      // Define a function to trigger the fetch request
+      const triggerFunction = (message, endpoint) => {
+        fetch(endpoint, {
+          method: 'POST',
+          body: JSON.stringify({ message })
+        })
+        .then(response => response.text())
+        .then(message => {
+          messageDiv.innerHTML = ''; // Clear previous content
+          
+          // Print the message as a single HTML element
+          const span = document.createElement('span');
+          span.textContent = message;
+          messageDiv.appendChild(span);
+        })
+        .catch(error => {
+          console.error(error);
+          messageDiv.textContent = 'An error occurred';
+        });
+      };
+
+      // Call the function immediately
+      triggerFunction('', '/trigger-function');
+
+      // Call the function every second
+      setInterval(() => triggerFunction('', '/trigger-function'), 1000);
+
+      // Add a click event listener to the button
+      button.addEventListener('click', () => triggerFunction('', '/trigger-function'));
+
+      // Add a click event listener to the other button
+      otherButton.addEventListener('click', () => {
+        const message = 'Hello, world! This is a different message.';
+        triggerFunction(message, '/trigger-function');
+      });
+
+      // Add a click event listener to the third button
+      thirdButton.addEventListener('click', () => triggerFunction('', '/trigger-function2'));
+    </script>
+  </body>
+</html>
