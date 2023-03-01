@@ -1,20 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Button Press Example</title>
+    <title>BeagleBone BeatBox Remote Portal</title>
   </head>
   <body>
     <h1>Button Press Example</h1>
-    <button id="myButton">Press me</button>
-    <button id="myOtherButton">Send different message</button>
-    <button id="myThirdButton">Call function 2</button>
+    <button id="myButton">Update</button>
+    <button id="thirdButton">Tempo +</button>
+    <button id="fourthButton">Tempo -</button>
+    <button id="fifthButton">Volume +</button>
+    <button id="sixthButton">Volume -</button>
+    <button id="seventhButton">Mode</button>
+    <button id="sound1">Play sound 1</button>
+    <button id="sound2">Play sound 2</button>
+    <button id="sound3">Play sound 3</button>
+    <button id="sound4">Play sound 4</button>
+    <button id="sound5">Play sound 5</button>
+    <button id="sound6">Play sound 6</button>
     <div id="message"></div>
 
     <script>
       const button = document.getElementById('myButton');
-      const otherButton = document.getElementById('myOtherButton');
-      const thirdButton = document.getElementById('myThirdButton');
+      const thirdButton = document.getElementById('thirdButton');
+      const fourthButton = document.getElementById('fourthButton');
+      const fifthButton = document.getElementById('fifthButton');
+      const sixthButton = document.getElementById('sixthButton');
+      const seventhButton = document.getElementById('seventhButton');
       const messageDiv = document.getElementById('message');
+      const sound1 = document.getElementById('sound1');
+      const sound2 = document.getElementById('sound2');
+      const sound3 = document.getElementById('sound3');
+      const sound4 = document.getElementById('sound4');
+      const sound5 = document.getElementById('sound5');
+      const sound6 = document.getElementById('sound6');
+
       
       // Define a function to trigger the fetch request
       const triggerFunction = (message, endpoint) => {
@@ -46,14 +65,19 @@
       // Add a click event listener to the button
       button.addEventListener('click', () => triggerFunction('', '/trigger-function'));
 
-      // Add a click event listener to the other button
-      otherButton.addEventListener('click', () => {
-        const message = 'Hello, world! This is a different message.';
-        triggerFunction(message, '/trigger-function');
-      });
-
       // Add a click event listener to the third button
-      thirdButton.addEventListener('click', () => triggerFunction('', '/trigger-function2'));
+      thirdButton.addEventListener('click', () => triggerFunction('', '/trigger-function3'));
+      fourthButton.addEventListener('click', () => triggerFunction('', '/trigger-function4'));
+      fifthButton.addEventListener('click', () => triggerFunction('', '/trigger-function5'));
+      sixthButton.addEventListener('click', () => triggerFunction('', '/trigger-function6'));
+      seventhButton.addEventListener('click', () => triggerFunction('', '/trigger-function7'));
+      sound1.addEventListener('click', () => triggerFunction('', '/trigger-function8'));
+      sound2.addEventListener('click', () => triggerFunction('', '/trigger-function9'));
+      sound3.addEventListener('click', () => triggerFunction('', '/trigger-function10'));
+      sound4.addEventListener('click', () => triggerFunction('', '/trigger-function11'));
+      sound5.addEventListener('click', () => triggerFunction('', '/trigger-function12'));
+      sound6.addEventListener('click', () => triggerFunction('', '/trigger-function13'));
+
     </script>
   </body>
 </html>
